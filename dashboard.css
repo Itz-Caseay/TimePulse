@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    /* display: flex; */
+    background: #fff;
+    color: blue;
+    width: 100vw;
+    height: 100vh;
+}
+
+.top-nav {
+    background: #2b6df6;
+    color: #fff;
+    padding: 15px 20px;
+    height: 140px;
+    font-size: 24px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0,0, 0.1);
+    z-index: 1000;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        svg {
+            width: 32px;
+            height: 32px;
+            color: #fff;
+        }
+    }
+
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .user-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2b6df6;
+            font-weight: 700;
+        }
+    }
+}
+
+.left-nav {
+    position: fixed;
+    top: 140px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 140px);
+    background: #f4f6f8;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+
+    ul {
+        list-style: none;
+
+        li {
+            margin-bottom: 15px;
+
+            a {
+                text-decoration: none;
+                color: #0f172a;
+                font-size: 16px;
+                display: block;
+                padding: 10px;
+                border-radius: 6px;
+
+                &:hover {
+                    background: #2b6df6;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 14px;
+        color: #6b7280;
+    }
+}
+
+.main-content {
+    margin-left: 220px;
+    padding: 180px 40px 40px 40px;
+    background: #f4f6f8;
+    min-height: calc(100vh - 140px);
+
+    header {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #0f172a;
+    }
+
+    .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 200px;
+            height: 220px;
+
+            .card-title {
+                font-size: 16px;
+                color: #6b7280;
+                margin-bottom: 10px;
+            }
+
+            .card-value {
+                font-size: 24px;
+                font-weight: 700;
+                color: #0f172a;
+            }
+        }
+    }
+
+    .notification-table {
+        margin-top: 40px;
+
+        form {
+            margin-bottom: 20px;
+
+            input, select {
+                padding: 10px;
+                margin-right: 10px;
+                border: 1px solid #e6e9ef;
+                border-radius: 6px;
+            }
+
+            button {
+                background: #2b6df6;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+
+                &:hover {
+                    background: #1e4bb8;
+                }
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+
+            thead th {
+                background: #f9fafb;
+                text-align: left;
+                padding: 12px;
+                font-size: 14px;
+                color: #6b7280;
+            }
+
+            tbody td {
+                padding: 12px;
+                border-top: 1px solid #f1f3f5;
+                font-size: 14px;
+                color: #0f172a;
+            }
+        }
+    }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TimePulse</title>
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=timer" />
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+            <span class="app-name">TimePulse</span>
+        </div>
+
+        <div class="user-info">
+            <img src="user-avatar.png" alt="User Avatar" class="user-avatar">
+            <span class="user-name">John Doe</span>
+            <div class="dropdown-menu">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-nav">
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="teachers.html">Attendance</a></li>
+            <li><a href="reports.html">Schedule</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2026 TimePulse</span> <br>
+                <span>Designed By Caseay</span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="main-content">
+        <header class="app-header">Teacher Dashboard</header>
+        <main class="container">
+            <section class="overview">
+                <div class="cards">
+                    <div class="card">              
+                        <div class="label">Total Hours (view)</div>
+                        <div class="value" id="total-hours">—</div>
+                    </div>
+                    <div class="card">
+                        <div class="label">Avg / Teacher</div>
+                        <div class="value" id="avg-hours">—</div>
+                    </div>
+                    <div class="card">
+                        <div class="label">Completed classes</div>
+                        <div class="value" id="completed-classes">—</div>
+                    </div>
+                </div>
+                <div class="notification-table">
+                    <form action="" method="post" class="checkin">
+                        <button type="submit" id="checkin-button">Check In</button>
+                    </form>
+
+                    <table id="notification-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Notification</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-06-01 09:00</td>
+                                <td>Mr. John Doe You have a math class by 10 AM.</td>
+                                <td>Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html> 
