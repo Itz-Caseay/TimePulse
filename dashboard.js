@@ -3,10 +3,11 @@ const checkInBtn = document.getElementById('checkin-button');
 // ===== GEOLOCATION-BASED CHECK-IN VERIFICATION =====
 // Define the exact allowed location for check-in
 const ALLOWED_LOCATION = {
-  latitude: 40.7128,    // Replace with your exact latitude
-  longitude: -74.0060,  // Replace with your exact longitude
-  radiusInMeters: 10    // Precision radius - user must be within 10 meters
+  latitude: 3.98769,
+  longitude: 11.51342,
+  radiusInMeters: 225 // user must be within 25 meters
 };
+
 
 /**
  * Calculate distance between two coordinates using Haversine formula
@@ -141,4 +142,3 @@ async function handleCheckIn() {
 if (checkInBtn) {
   checkInBtn.addEventListener('click', handleCheckIn);
 }
-const latitude =
