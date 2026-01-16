@@ -209,3 +209,53 @@ body {
         }
     }
 }
+
+@media (max-width: 720px) {
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 15px 20px 30px 20px;
+
+        .user-info {
+            margin-top: 10px;
+
+            a {
+                font-size: 14px;
+        }
+    }
+
+    .left-nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        box-shadow: none;
+        display: none;
+
+        ul {
+            display: flex;
+            overflow-x: auto;
+
+            li {
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 200px 20px 20px 20px;
+
+        .cards {
+            flex-direction: column;
+
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    }
+}
+
+}
