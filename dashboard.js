@@ -8,15 +8,151 @@ const ALLOWED_LOCATION = {
   radiusInMeters: 225 // user must be within 25 meters
 };
 
+// Timer variables
+let checkInTime = null;
+let timerInterval = null;
+let totalTimeSpent = 0;
+
 
 /**
- * Calculate distance between two coordinates using Haversine formula
- * @param {number} lat1 - User's latitude
- * @param {number} lon1 - User's longitude
- * @param {number} lat2 - Allowed location latitude
- * @param {number} lon2 - Allowed location longitude
- * @returns {number} Distance in meters
+ * Format time from seconds to HH:MM:SS
+ * @param {number} seconds - Total seconds
+ * @returns {string} Formatted time string
  */
+function formatTime(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+/**
+ * Start the timer and display elapsed time
+ */
+function startTimer() {
+  checkInTime = Date.now();
+  
+  // Create timer display
+  const timerDisplay = document.createElement('div');
+  timerDisplay.id = 'timer-display';
+  timerDisplay.style.cssText = `
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: monospace;
+  `;
+  timerDisplay.textContent = '00:00:00';
+  
+  const checkinForm = document.querySelector('.checkin');
+  checkinForm.parentNode.insertBefore(timerDisplay, checkinForm);
+  
+  // Update timer every second
+  timerInterval = setInterval(() => {
+    const elapsedTime = Math.floor((Date.now() - checkInTime) / 1000);
+    timerDisplay.textContent = formatTime(elapsedTime);
+  }, 1000);
+}
+
+/**
+ * Create and show checkout button
+ */
+function createCheckoutButton() {
+  // Hide check-in button
+  checkInBtn.style.display = 'none';
+  
+  // Create checkout button
+  const checkoutBtn = document.createElement('button');
+  checkoutBtn.id = 'checkout-button';
+  checkoutBtn.textContent = 'Check Out';
+  checkoutBtn.style.cssText = `
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  `;
+  
+  checkoutBtn.onmouseover = () => { checkoutBtn.style.background = '#e68900'; };
+  checkoutBtn.onmouseout = () => { checkoutBtn.style.background = '#ff9800'; };
+  
+  checkoutBtn.addEventListener('click', handleCheckOut);
+  
+  checkInBtn.parentNode.insertBefore(checkoutBtn, checkInBtn);
+}
+
+/**
+ * Handle check-out and record total time
+ */
+async function handleCheckOut() {
+  // Verify user is still at the location
+  const checkoutBtn = document.getElementById('checkout-button');
+  checkoutBtn.disabled = true;
+  checkoutBtn.textContent = 'Verifying location...';
+  
+  const isAtAllowedLocation = await verifyCheckInLocation();
+  
+  if (!isAtAllowedLocation) {
+    alert('Check-out DENIED! You must be at the required location to check out.');
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = 'Check Out';
+    return;
+  }
+  
+  // Clear timer
+  clearInterval(timerInterval);
+  
+  // Calculate total time spent
+  totalTimeSpent = Math.floor((Date.now() - checkInTime) / 1000);
+  const formattedTime = formatTime(totalTimeSpent);
+  
+  // Update button appearance
+  checkoutBtn.textContent = '✓ Checked Out';
+  checkoutBtn.style.background = '#4CAF50';
+  checkoutBtn.disabled = true;
+  
+  // Update timer display
+  const timerDisplay = document.getElementById('timer-display');
+  if (timerDisplay) {
+    timerDisplay.style.background = '#4CAF50';
+    timerDisplay.textContent = `Time Spent: ${formattedTime}`;
+  }
+  
+  alert(`Check-out successful! Total time spent: ${formattedTime}`);
+  
+  // Log the attendance record
+  const attendanceRecord = {
+    checkInTime: new Date(checkInTime).toLocaleString(),
+    checkOutTime: new Date().toLocaleString(),
+    totalTimeSpent: formattedTime,
+    totalSeconds: totalTimeSpent
+  };
+  
+  console.log('Attendance Record:', attendanceRecord);
+  
+  // You can send this data to your server here
+  // Example: saveAttendanceToServer(attendanceRecord);
+  
+  // Reset after 4 seconds
+  setTimeout(() => {
+    checkInBtn.style.display = 'block';
+    checkoutBtn.remove();
+    const timerDisplay = document.getElementById('timer-display');
+    if (timerDisplay) timerDisplay.remove();
+    checkInBtn.disabled = false;
+    checkInBtn.textContent = 'Check In';
+    checkInBtn.style.backgroundColor = '';
+  }, 4000);
+}
+
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371000; // Earth's radius in meters
   const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -108,15 +244,13 @@ async function handleCheckIn() {
       checkInBtn.style.backgroundColor = '#4CAF50';
       alert('Check-in successful! You are at the correct location.');
       
+      // Start timer and show checkout button
+      startTimer();
+      createCheckoutButton();
+      
       // You can add your check-in logic here
       console.log('Check-in completed at', new Date());
       
-      // Reset button after 3 seconds
-      setTimeout(() => {
-        checkInBtn.disabled = false;
-        checkInBtn.textContent = 'Check In';
-        checkInBtn.style.backgroundColor = '';
-      }, 3000);
     } else {
       // Check-in denied - user is not at exact location
       checkInBtn.textContent = '✗ Check-in Denied';
