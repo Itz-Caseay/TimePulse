@@ -210,7 +210,7 @@ body {
     }
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
     .top-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -258,4 +258,128 @@ body {
     }
 }
 
+} */
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .top-nav {
+        height: 100px;
+        font-size: 20px;
+        padding: 10px 15px;
+    }
+
+    .left-nav {
+        width: 180px;
+        top: 100px;
+        height: calc(100vh - 100px);
+    }
+
+    .main-content {
+        margin-left: 180px;
+        padding: 140px 20px 20px 20px;
+    }
+
+    .main-content .cards .card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .top-nav {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Sidebar becomes top menu */
+    .left-nav {
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            li {
+                margin-bottom: 0;
+
+                a {
+                    padding: 8px 12px;
+                    background: #e5e7eb;
+                }
+            }
+        }
+
+        footer {
+            position: static;
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .main-content .cards {
+        flex-direction: column;
+    }
+
+    .main-content .cards .card {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Make table scrollable */
+    .notification-table table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .top-nav {
+        font-size: 18px;
+
+        .user-info {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    .main-content header {
+        font-size: 22px;
+    }
+
+    .notification-table form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        input, select, button {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
 }
