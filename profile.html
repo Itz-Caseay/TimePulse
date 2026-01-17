@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimePulse - Teacher Profile</title>
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+
+<style>
+    .profile-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+    }
+
+    .profile-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+        width: 350px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    .profile-name {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .profile-role {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .profile-details p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+</style>
+<body>
+    <div class="top-nav">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+            <span class="app-name">TimePulse</span>
+        </div>
+
+        <div class="user-info">
+            <img src="user-avatar.png" alt="User Avatar" class="user-avatar">
+            <span class="user-name">John Doe</span>
+            <div class="dropdown-menu">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-nav">
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="teachers.html">Attendance</a></li>
+            <li><a href="reports.html">Schedule</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2026 TimePulse</span> <br>
+                <span>Designed By Caseay</span>
+            </div>
+        </footer>
+    </div>
+    <div class="main-content">
+        <header class="app-header">Teacher Profile</header>
+        <main class="container">
+            <section class="profile-section">
+                <div class="profile-card">
+                    <img src="user-avatar.png" alt="User Avatar" class="profile-avatar">
+                    <h2 class="profile-name">John Doe</h2>
+                    <p class="profile-role">Mathematics Teacher</p>
+                    <div class="profile-details">
+                        <p><strong>Email:</strong> 
+                            john.doe@example.com
+                        </p>
+                        <p><strong>Phone:</strong> 
+                            +1 (555) 123-4567
+                        </p>
+                        <p><strong>Subject:</strong> 
+                            Mathematics
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
