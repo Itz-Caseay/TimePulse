@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimePulse - Attendance</title>
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+
+<style>
+    .attendance-section {
+        margin: 20px;
+    }
+
+    .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .attendance-table th, .attendance-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .attendance-table th {
+        background-color: #f4f4f4;
+    }
+</style>
+<body>
+    <div class="top-nav">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+            <span class="app-name">TimePulse</span>
+        </div>
+
+        <div class="user-info">
+            <img src="user-avatar.png" alt="User Avatar" class="user-avatar">
+            <span class="user-name">John Doe</span>
+            <div class="dropdown-menu">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-nav">
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="teachers.html">Attendance</a></li>
+            <li><a href="reports.html">Schedule</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2026 TimePulse</span> <br>
+                <span>Designed By Caseay</span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="main-content">
+        <header class="app-header">Attendance</header>
+        <main class="container">        
+            <section class="attendance-section">
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>Teacher Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Hours Logged</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>2024-06-01</td>
+                            <td>Present</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>2024-06-01</td>
+                            <td>Absent</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Johnson</td>
+                            <td>2024-06-01</td>
+                            <td>Present</td>
+                            <td>5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
